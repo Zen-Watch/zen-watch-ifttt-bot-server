@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "zen-watch-ifttt-bot-server",
+            "script": "npm",
+            "args" : "start"
+        }
+    ]
+}
