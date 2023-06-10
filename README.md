@@ -1,5 +1,5 @@
 # Zen Watch IFTTT Bot Server
-A bot server to handle server callbacks from Zen IFTTT without starting from scratch
+A bot server to handle server callbacks from Zen IFTTT without starting from scratch.
 
 ## Config files
 ```
