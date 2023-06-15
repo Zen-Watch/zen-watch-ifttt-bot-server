@@ -86,6 +86,8 @@ const litActionCode = `
   const gasPriceParam_var = "0x2e90edd000";
   const gasLimitParam_var = "0x" + (30000).toString(16);
 
+  console.log('gasLimitParam_var: ', gasLimitParam_var);
+
   const signResult = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
@@ -109,7 +111,7 @@ const litActionCode = `
   console.log("serializedTx: ", serializedTx);
 
   const provider = new ethers.providers.AlchemyProvider('matic', process.env.ALCHEMY_API_KEY!);
-  const sentTx = await provider.sendTransaction(serializedTx);
-  console.log("sentTx: ", sentTx);
+  // const sentTx = await provider.sendTransaction(serializedTx);
+  // console.log("sentTx: ", sentTx);
 
 }
