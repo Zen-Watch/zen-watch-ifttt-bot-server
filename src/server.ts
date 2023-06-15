@@ -39,4 +39,7 @@ app.use(authenticate_whitelisted_api_key);
 const marcoRouter = require("./routes/marco");
 app.use("/marco", marcoRouter);
 
+const litRouter = require("./routes/lit");
+app.use("/lit", litRouter);
+
 app.listen(process.env.SERVER_PORT, () => console.log("Server Started!!"));

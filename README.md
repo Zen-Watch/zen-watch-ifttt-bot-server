@@ -9,12 +9,16 @@ ALLOWED_API_KEY_DEMO=
 # ALLOWED_API_KEY_DEMO=1234567890
 GMAIL_USER=
 GMAIL_PASSWORD=
+PRIVATE_KEY=
+ALCHEMY_API_KEY=
 ```
 Use the demo key during demp
 
 ### Deployment
-``` npm install ```
-Installs the dependencies for the the app with node command.
+``` npm install --legacy-peer-deps ```
+Installs the dependencies for the the app with node command. 
+For now, use the `legacy-peer-deps` to resolve conflicts between libraraies due to version mismatch of dependencies. For ex, SIWE and Ethers.
+Over the long-term, we would refactor the code to remove the need for using the above flag.
 
 ``` npm start ```
 Starts the app with node command.
