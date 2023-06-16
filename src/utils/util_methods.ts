@@ -1,3 +1,4 @@
+import { Network } from 'alchemy-sdk';
 import { SUPPORTED_EVM_TRANSACTION_EVENTS } from './constants';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -15,4 +16,18 @@ export function _get_random_number(max: number) {
 export function get_random_shard_number() {
     const api_worker_shards = Number(process.env.API_WORKER_SHARDS);
     return _get_random_number(api_worker_shards);
+}
+
+export function convert_lit_chain_to_alchemy_chain(chain: string) {
+    // example: https://github.com/alchemyplatform/alchemy-sdk-js/blob/d9f6619ed98f534fbae90fbc60c1ee9599986c4d/README.md?plain=1#L38
+    // Alchemy supported chains: https://github.com/alchemyplatform/alchemy-sdk-js/blob/d9f6619ed98f534fbae90fbc60c1ee9599986c4d/src/util/const.ts#L6
+
+    switch (chain) {
+        case 'polygon':
+            return 'matic';
+        case 'case2':
+            return
+        default:
+            throw new Error('Unsupported target chain by the LIT bot server');
+    }
 }
