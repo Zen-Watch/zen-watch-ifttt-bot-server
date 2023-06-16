@@ -46,28 +46,10 @@ export async function sign_and_send_general_ethereum_txn_logic(body: any) {
 
   // this code will be run on the node
 const litActionCode = `
-(async () => {
-  const fromAddressParam = ethers.utils.computeAddress(publicKey);
-  const latestNonce = await LitActions.getLatestNonce({ address: fromAddressParam, chain });
-  const txParams = {
-    nonce: latestNonce,
-    gasPrice: gasPriceParam,
-    gasLimit: gasLimitParam,
-    to: toAddressParam,
-    value: valueParam,
-    chainId: chainIdParam,
-    data: dataParam,
-  };
-
-  LitActions.setResponse({ response: JSON.stringify(txParams) });
-  
-  const serializedTx = ethers.utils.serializeTransaction(txParams);
-  const rlpEncodedTxn = ethers.utils.arrayify(serializedTx);
-  const unsignedTxn =  ethers.utils.arrayify(ethers.utils.keccak256(rlpEncodedTxn));
-
-  const sigShare = await LitActions.signEcdsa({ toSign: unsignedTxn, publicKey, sigName });
-})();
+  ${body.litActionCode}
 `;
+
+console.log('litActionCode: ', litActionCode);
 
   const litNodeClient = new LitJsSdkNodeJs.LitNodeClientNodeJs({
     litNetwork: "serrano",
@@ -111,7 +93,7 @@ const litActionCode = `
   console.log("serializedTx: ", serializedTx);
 
   const provider = new ethers.providers.AlchemyProvider('matic', process.env.ALCHEMY_API_KEY!);
-  // const sentTx = await provider.sendTransaction(serializedTx);
-  // console.log("sentTx: ", sentTx);
+  const sentTx = await provider.sendTransaction(serializedTx);
+  console.log("sentTx: ", sentTx);
 
 }
