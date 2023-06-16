@@ -40,13 +40,7 @@ pm2 delete <process-name>
 pm2 ls
 ```
 
-### Find and kill a process
-```
-sudo lsof -i :<PortNumber>
-kill -9 <PID>
-```
-
-## Find and kill a process
+## Find and delete a process
 ```
 sudo lsof -i :1339
 kill -9 <PID>
